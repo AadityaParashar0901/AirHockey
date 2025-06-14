@@ -109,6 +109,15 @@ Function distance2 (X1, Y1, X2, Y2)
     distance2 = _Hypot(Abs(X1 - X2), Abs(Y1 - Y2))
 End Function
 Sub FillCircle (X, Y, R1, R2, C&)
+    For T = 0 To 360 Step _Asin(1 / R2)
+        __T = _D2R(T)
+        X1 = X + R1 * Cos(__T)
+        Y1 = Y + R1 * Sin(__T)
+        X2 = X + R2 * Cos(__T)
+        Y2 = Y + R2 * Sin(__T)
+        Line (X1, Y1)-(X2, Y2), C&
+    Next T
+    Exit Sub
     For I = R1 To R2
         Circle (X, Y), I, C&
     Next I
